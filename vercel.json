@@ -1,12 +1,11 @@
 {
   "version": 2,
-
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/routes/index.js"
+  "functions": {
+    "routes/**/*.js": {
+      "runtime": "vercel-node@2.0.0"
     }
-  ],
+  },
+  "routes": [{ "src": "/(.*)", "dest": "/index.ts" }],
 
   "builds": [
     {
