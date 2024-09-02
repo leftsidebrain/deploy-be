@@ -23,9 +23,6 @@ export const login = async (req: Request, res: Response) => {
 
 export const register = async (req: Request, res: Response) => {
   try {
-    if (req.file) {
-      req.body.profile_pic = req.file.filename;
-    }
     const user = await authService.register(req.body as IUserRegister);
     res.json({
       response: "success",

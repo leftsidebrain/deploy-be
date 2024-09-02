@@ -58,9 +58,10 @@ export const findByOne = async (req: Request, res: Response) => {
 export const create = async (req: Request, res: Response) => {
   try {
     await postSchema.validateAsync(req.body);
+    console.log("🚀 ~ create ~ res.locals.images:", res.locals.images);
 
-    if (req.files) {
-      req.body.images = req.files;
+    if (res.locals.images) {
+      req.body.images = res.locals.images;
     }
 
     const userId = res.locals.user.id;

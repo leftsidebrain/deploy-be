@@ -49,12 +49,8 @@ export const findById = async (req: Request, res: Response) => {
 };
 
 export const update = async (req: Request, res: Response) => {
-  // if (!req.files || !req.files["profilePic"] || !req.files["banner"]) {
-  //   return res.status(400).json({ message: "User ID, profilePic, and banner files are required." });
-  // }
-
-  if (req.file) {
-    req.body.profile_pic = req.file.filename;
+  if (res.locals.image) {
+    req.body.profile_pic = res.locals.image;
   }
   const user = await userService.updateUser(parseInt(req.params.id), req.body);
   res.json(user);

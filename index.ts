@@ -11,7 +11,6 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/uploads", express.static("src/uploads"));
 app.use(cors());
 
 app.get("/", async (req, res) => {
