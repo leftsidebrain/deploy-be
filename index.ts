@@ -14,8 +14,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("src/uploads"));
 app.use(cors());
 
-app.get("/", async (req, res) => {
-  res.send("Hello World!");
+app.get("/users/1", async (req, res) => {
+  const users = await db.user.findMany({
+    orderBy: {
+      id: "desc",
+    },
+  });
+
+  res.send(users[0].username);
 });
 
 app.use(route);
