@@ -15,13 +15,14 @@ export const uploadCloudinary = async (req: Request, res: Response, next: NextFu
 
   const file: CloudinaryFile = req.file as CloudinaryFile;
   const files: CloudinaryFile[] = req.files as CloudinaryFile[];
+
   if (!file && !files) {
-    return res.send("No file uploaded");
+    return next();
   }
 
   if (file) {
     return uploadSingle(file, res, next);
-  } else {
+  } else if (files) {
     return uploadMultiple(files, res, next);
   }
 };
@@ -47,7 +48,6 @@ const uploadMultiple = async (files: CloudinaryFile[], res: Response, next: Next
           cloudinaryUrls.push(result.secure_url);
 
           if (cloudinaryUrls.length === files.length) {
-            //All files processed now get your images here
             res.locals.images = cloudinaryUrls;
             next();
           }
