@@ -17,7 +17,7 @@ app.get("/", async (req, res) => {
   res.send("hello world");
 });
 
-app.use(route);
+app.use("/api", route);
 
 app.listen(port, async () => {
   try {
