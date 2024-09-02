@@ -58,7 +58,6 @@ export const findByOne = async (req: Request, res: Response) => {
 export const create = async (req: Request, res: Response) => {
   try {
     await postSchema.validateAsync(req.body);
-    console.log("🚀 ~ create ~ res.locals.images:", res.locals.images);
 
     if (res.locals.images) {
       req.body.images = res.locals.images;
