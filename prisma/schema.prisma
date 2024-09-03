@@ -43,10 +43,10 @@ model Posts {
 }
 
 model PostImage {
-  id     Int     @id @default(autoincrement())
-  image  String?
+  id     Int    @id @default(autoincrement())
+  image  String
   postId Int
-  post   Posts   @relation(fields: [postId], references: [id])
+  post   Posts  @relation(fields: [postId], references: [id])
 }
 
 model Like {
