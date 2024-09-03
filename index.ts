@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://deploy-fe-smoky.vercel.app/",
+    origin: "https://deploy-2ik6xxpbp-leftsidebrains-projects.vercel.app",
   })
 );
 
