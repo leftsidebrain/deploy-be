@@ -19,12 +19,21 @@ export const findAll = async (userId: number) => {
 export const findSearch = async (query: any) => {
   return await db.user.findMany({
     where: {
-      username : {
-        startsWith: query,
-        mode: "insensitive",
-      },
+      OR: [
+        {
+          username: {
+            startsWith: query,
+            mode: "insensitive",
+          },
+        },
+        {
+          fullname: {
+            startsWith: query,
+            mode: "insensitive",
+          },
+        },
+      ],
     },
-
     select: {
       id: true,
       username: true,
