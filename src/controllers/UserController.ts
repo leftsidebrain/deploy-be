@@ -19,11 +19,8 @@ export const findAll = async (req: Request, res: Response) => {
 };
 export const findInput = async (req: Request, res: Response) => {
   try {
-    const { query } = req.query;
-    if (!query) {
-      return res.status(400).json({ error: "Query is required" });
-    }
-    const users = await userService.findSearch(query);
+
+    const users = await userService.findSearch(req.params.query);
     if (!users) {
       return res.send({
         response: "fail",

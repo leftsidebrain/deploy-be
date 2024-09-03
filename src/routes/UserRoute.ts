@@ -7,7 +7,7 @@ const userRoute = Router();
 
 userRoute.post("/", userController.findAll);
 
-userRoute.get("/search", userController.findInput);
+userRoute.get("/search/:query", userController.findInput);
 
 userRoute.get("/:id", userController.findById);
 
